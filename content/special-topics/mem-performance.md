@@ -78,6 +78,7 @@ In addition to the resource levels presented in the UI the following options can
 - "mini" (1GB ram, 2MB single buffer, 128MB thumbnail cache, 200MB OpenCL memory)
 - "notebook" (4GB ram, 32MB  single buffer, 512MB thumbnail cache, 1GB OpenCL memory)
 - "reference" (8GB ram, 32MB single buffer, 512MB thumbnail cache, 2GB OpenCL memory)
+- "common2026” (16GB ram, 64MB single buffer, 1GB thumbnail cache, 5.5GB OpenCL memory)
 
 ## tuning GPU memory usage
 
