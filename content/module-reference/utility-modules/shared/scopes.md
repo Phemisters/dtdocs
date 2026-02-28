@@ -7,7 +7,7 @@ This module provides various graphical depictions of the developed image's light
 
 ![scopes module](./scopes/scopes.png#w50)
 
-Hover the mouse over the module to reveal buttons that can be used to adjust the display. The buttons on the left-hand-side are used to choose the display mode, from left-to-right: vectorscope, waveform, rgb parade and histogram. The buttons on the right-hand-side control how the plot for the current scope is drawn.
+Hover the mouse over the module to reveal buttons that can be used to adjust the display. The buttons on the left-hand-side are used to choose the display mode, from left-to-right: vectorscope, waveform, waveform/vectorscope, rgb parade and histogram. The buttons on the right-hand-side control how the plot for the current scope is drawn.
 
 The height of the scopes module can be changed by clicking-and-dragging on the bottom edge or by holding down Shift+Alt while scrolling the mouse. The visibility of the module can be toggled with a keyboard shortcut (default Ctrl+Shift+H).
 
@@ -70,6 +70,12 @@ The vectorscope shows [chromaticity](https://en.wikipedia.org/wiki/Chromaticity)
 The distance from the center of the graph represents chroma and the angle represents hue. Areas of the graph are colored depending on the chromaticity of the color to which they correspond in the image. The graph represents color "volume" by rendering the more frequently used colors in lighter tones.
 
 The graph includes a "hue ring" representing the maximum chroma of each hue (in bounded RGB) of the current histogram profile. The RGB primary/secondary colors are marked by circles around the edge of the hue ring.
+
+# waveform/vectorscope
+
+![waveform/vectorscope](./scopes/waveform-vectorscope.png#w50)
+
+Shows a combined mode with the waveform on the left and the vectorscope on the right. The available controls are as described for the individual modes.
 
 ## color harmony and additional vectorscope controls
 
