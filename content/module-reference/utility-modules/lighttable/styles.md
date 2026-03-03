@@ -24,6 +24,9 @@ A large selection of "camera" styles is provided with darktable. These styles ar
 create duplicate
 : When applying a style to images, tick this box to create a duplicate of each image before applying the chosen style to that duplicate. Disable this option to apply the chosen style directly to the selected images. Beware that in this case any existing history stack is overwritten (depending on the mode -- see below) and cannot be recovered.
 
+preview
+: Use this combobox to change the preview size ("Default" or "Large") or to hide the preview entirely. Hiding the preview can improve performance on slower computers, where rendering may take additional time.
+
 mode
 : As with the [history stack](./history-stack.md) module, this combobox allows you to either "append" the style to the current history stack or to "overwrite" the history stack of the target image.
 
