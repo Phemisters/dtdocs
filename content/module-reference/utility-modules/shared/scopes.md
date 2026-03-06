@@ -75,7 +75,7 @@ The graph includes a "hue ring" representing the maximum chroma of each hue (in 
 
 ![waveform/vectorscope](./scopes/waveform-vectorscope.png#w50)
 
-Shows a combined mode with the waveform on the left and the vectorscope on the right. The available controls are as described for the individual modes.
+Shows a combined mode with the vectorscope on the left and the waveform on the right. The available controls are as described for the individual modes.
 
 ## color harmony and additional vectorscope controls
 
