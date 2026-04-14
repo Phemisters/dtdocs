@@ -97,7 +97,7 @@ brush
 gradient
 : The gradient shape is a linear gradient which extends from a given point to the edge of the image.
 
-: Click on the image canvas to define the position of the line that defines 50% opacity. Dotted lines indicate the distance beyond which the opacity is 100% and 0%. Between these dotted lines the opacity changes linearly. 
+: Click on the image canvas to define the position of the line that defines 50% opacity. Dotted lines indicate the distance beyond which the opacity is 100% and 0%. Between these dotted lines the opacity changes linearly. You can change the distance between the dotted lines by scrolling with your mouse wheel and pressing Shift.
 
 : The line has two anchor nodes which you can drag to change the rotation of the gradient. You can also set the rotation angle when placing the gradient shape by clicking and dragging to place the shape.
 
