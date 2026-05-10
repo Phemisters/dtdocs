@@ -21,6 +21,9 @@ A large selection of "camera" styles is provided with darktable. These styles ar
 
 # module controls
 
+hide preview
+: Use this checkbox to hide the preview on the tooltip entirely. This can be useful on slower computers, where rendering the preview may take additional time.
+
 create duplicate
 : When applying a style to images, tick this box to create a duplicate of each image before applying the chosen style to that duplicate. Disable this option to apply the chosen style directly to the selected images. Beware that in this case any existing history stack is overwritten (depending on the mode -- see below) and cannot be recovered.
 
@@ -47,3 +50,9 @@ import
 
 export
 : Save the selected style to disk as a `.dtstyle` file. This allows styles to be published and shared with other users.
+
+# preferences
+The "preferences..." option in the presets menu allows you to adjust the following settings:
+
+preview size
+: Set the size of the preview on the tooltip. The available options are: default and large.
