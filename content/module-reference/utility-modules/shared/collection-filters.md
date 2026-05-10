@@ -127,6 +127,9 @@ Within the extension field, you can also use the keywords `RAW` (to select all h
 
 The camera and lens filters are presented text entry fields into which you can enter text to filter by. Alternatively, you can right-click on the text box to see a list of cameras or lenses to select from.
 
+## duplicates
+This filter allows you to narrow down the collection to images that contain either at least one duplicate or exclusively duplicates. Filtering for only duplicates makes it easy to work with duplicates without touching the originals.
+
 ## text search
 
 You can search images using any of their text properties (path, filename, filmroll, tags, metadata, camera, maker) using the text search filter. The search is performed "on-the-fly" and the widget is dimmed during the search process.
