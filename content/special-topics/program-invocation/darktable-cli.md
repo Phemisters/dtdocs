@@ -23,6 +23,7 @@ darktable-cli [<input file or folder>]
               [--apply-custom-presets <0|1|false|true>]
               [--out-ext <extension>]
               [--import <file or dir>]
+              [--library <path>]
               [--icc-type <type>]
               [--icc-file <file>]
               [--icc-intent <intent>]
@@ -68,6 +69,9 @@ The user must supply an input filename and an output filename. All other paramet
 
 `--import <file or dir>`
 : Specify input file or folder, can be used multiple times. This option cannot be combined with `<input file or folder>`.
+
+`--library <path>`
+: Read the image processing history stack from the specified library database instead of XMP sidecar files.
 
 `--icc-type <type>`
 : Specify the ICC profile type, which is the same as specifying the "output profile" in the [_output color profile_](../../module-reference/processing-modules/output-color-profile.md) module. Defaults to "image specified". Use `--help icc-type` to obtain a list of the supported types. See the _output color profile_ module reference for a more detailed description of the available options.
