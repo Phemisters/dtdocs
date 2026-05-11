@@ -21,7 +21,7 @@ Using this module, external raster mask files are made available as a raster mas
 # module controls
 
 file selection
-: Choose the external raster file to use. File selection is inactive if the raster mask files root folder has not been defined in [preferences > processing](../../preferences-settings/processing.md).
+: Choose the external raster file to use. The initial raster mask files root folder can be set in [preferences > processing](../../preferences-settings/processing.md).
 
 mode
 : Choose any of the RGB channels, or a combination of them, to generate the raster mask from.
