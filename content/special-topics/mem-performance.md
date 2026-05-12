@@ -102,56 +102,45 @@ The default darktable settings deliver a reasonable GPU performance on most syst
 
 Most of the OpenCL-related options are managed with a "per device" strategy. The configuration parameter for each device looks like:
 
-`cldevice_v5_nvidiacudaquadrortx4000=0 250 0 16 16 128 0 0 0.000 0.000 0.500`
+`cldevice_v6_rusticlamdradeon8060sgraphics=250 0 1 0 0 0.000 0.250`
 
 or, more generally
 
-`cldevice_version_canonicalname=a b c d e f g h i j k`
+`cldevice_version_canonicalname=a b c d e f g`
 
 An entry will be automatically created in darktablerc for each newly-detected device when you launch darktable for the first time, with the correct canonical device name and version number. The parameters `a` - `k` are defined as follows and can be manually edited:
 
-a. avoid atomics
-: _1 = avoid atomics; 0 = use atomics_ (default)
-: Atomic operations in OpenCL are a special method of data synchronization and are only used in a few modules. Unfortunately, some old AMD/ATI devices are extremely slow in processing atomics and, on these cards, it is better to process the affected modules on the CPU rather than accepting an ultra-slow GPU codepath. Set this parameter to 1 if you experience slow processing within modules like [_shadows and highlights_](../../module-reference/processing-modules/shadows-and-highlights.md), [_monochrome_](../../module-reference/processing-modules/monochrome.md), [_local contrast_](../../module-reference/processing-modules/local-contrast), or [_global tonemap (deprecated)_](../../module-reference/processing-modules/global-tonemap) or if you get intermittent system freezes. Please note that this should not affect any card manufactured since 2015.
-
-b. micro nap
+a. micro nap
 : _default 250_
 : In an ideal case you will keep your GPU busy at 100% when processing the pixelpipe. However, if your GPU is also required to update your screen, and darktable is using it at 100%, there may not be sufficient time left for this task. This will usually manifest as jerky GUI updates on panning, zooming or when moving sliders. To resolve this issue darktable can add small pauses into its pixelpipe processing so that the GPU can catch its breath and perform GUI related activities. The "micro nap" parameter controls the duration of these pauses in microseconds.
 
 : On all current systems you are safe with the default value. If you are using multiple devices or you are not using your discrete GPU for drawing on your screen, this value can be set to 0 for all non-desktop devices leading to improved performance.
 
-c. pinned memory
+b. pinned memory
 : _0 = disable pinned transfer (default); 1 = enforce pinned transfer_
 : During tiling huge amounts of memory need to be transferred between host and device. On some devices direct memory transfers to and from an arbitrary host memory region may give a large performance penalty. This is especially noticeable when exporting large images on smaller graphics cards or while using newer modules like [_diffuse or sharpen_](../module-reference/processing-modules/diffuse.md) or the _guided laplacians_ mode in the [_highlight reconstruction_](../module-reference/processing-modules/highlight-reconstruction.md) module.
 
 : There is no safe method or general rule to predict whether or not this parameter will provide a performance benefit, so you will have to experiment for yourself. However, the chance of pinned transfer leading to an improvement is pretty low if your card was manufactured after 2015.
 
-d. clroundup wh / e. clroundup ht
-: These parameters should be left at this default value -- testing has not shown any benefit to using other values.
+c. use OpenCL events
+: _1 = use OpenCL events when calling enqueue kernels (default); 0 = don't use_
+: This flag controls the use of OpenCL events when calling enqueue kernels.
 
-f. number of event handles
-: _default 128_
-: Event handles are used by darktable to monitor the success/failure of kernels and provide profiling info even if the pixelpipe is executed asynchronously. The number of event handles is a limited resource of your OpenCL driver -- while they can be recycled, there is a limited number that can be used at the same time. Unfortunately, there is no way to find out what the resource limits are for a given device (this is due to darktable using the OpenCL V.1.2 API to support all platforms), so darktable uses a conservative guess of 128 by default. On most current devices and drivers you can expect a number of up to 1024 to be safe (for sure if your driver / card reports OpenCL V.2.0 or larger) leading to a slightly better OpenCL performance. If your driver runs out of free handles you will experience failing OpenCL kernels with error message `CL_OUT_OF_RESOURCES` or even crashes or system freezes. (If you are running into this problem, please open a github issue)
-
-: A value of 0 will block darktable from using any event handles. This will prevent darktable from properly monitoring the success of your OpenCL kernels but saves some driver overhead leading to a slightly better performance (less than 5%). The consequence is that all failures will lead to garbled output without darktable noticing. This is only recommended if you know for sure that your system runs rock-solid.
-
-g. asynchronous mode
+d. asynchronous mode
 : _1 = use asynchronous mode; 0 = don't use (default)_
 : This flag controls how often darktable blocks the OpenCL pixelpipe to get a status on success/failure of the kernels that have been run. For optimum latency set this to 1, so that darktable runs the pixelpipe asynchronously and tries to use as few interrupts/events as possible. If you experience OpenCL errors like failing kernels, reset the parameter to 0. This will cause darktable to interrupt after each module so that you can more easily isolate any problems. Issues have been reported with some older AMD/ATI cards (like the HD57xx) which can produce garbled output if this parameter is set to 1. If in doubt, leave it at its default of 0.
 
-h. disable device
+e. disable device
 : _0 = enable device; 1 = disable device_
 : If darktable detects a malfunctioning device it will automatically mark it as such by setting this parameter to 1. If you have a device that reports a lot of errors you can manually disable it by setting this field to 1. If darktable has disabled the device but you are sure it should be used you can re-enable it by setting this field to 0.
 
-i. reserved
-
-j. advantage hint
+f. advantage hint
 : This defines the advantage hint described in the [balanced OpenCL versus CPU tiling](#balanced-opencl-versus-cpu-tiling) section. If you have a fast graphics card with plenty of memory you can safely leave this at its default value of 0.000. However, if you want to adapt this number to your own system, you should use the following process:
 1. Start darktable with the tiling debug option (`darktable -d tiling`) and start editing an image in the darkroom. Open the [_highlight reconstruction_](../module-reference/processing-modules/highlight-reconstruction.md) module and use the "guided laplacians" method, setting the "diameter of reconstruction" to a high value, while ensuring that tiling does not occur (check the debug information in your terminal session while adjusting the slider).
 1. Check the execution times of this module with OpenCL on and off (by running `darktable -d perf` to examine the performance).
 1. Set the "advantage hint option" to approximately (CPU execution time / GPU execution time).
 
-k. shared memory fraction
+g. shared memory fraction
 : Some OpenCL devices don't have dedicated memory but share it with the CPU -- Apple ARM silicon is one example but also onboard devices from Intel, AMD or ARM SOCs. As we want to keep system memory available for caching or CPU codepaths we restrict the amount of all memory used to the given fraction. So with the default of 0.5 and an Apple computer with 16GB of system RAM, OpenCL would be able to make use of 8GB.
 
 ---
