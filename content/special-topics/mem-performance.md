@@ -108,7 +108,7 @@ or, more generally
 
 `cldevice_version_canonicalname=a b c d e f g`
 
-An entry will be automatically created in darktablerc for each newly-detected device when you launch darktable for the first time, with the correct canonical device name and version number. The parameters `a` - `k` are defined as follows and can be manually edited:
+An entry will be automatically created in darktablerc for each newly-detected device when you launch darktable for the first time, with the correct canonical device name and version number. The parameters `a` - `g` are defined as follows and can be manually edited:
 
 a. micro nap
 : _default 250_
