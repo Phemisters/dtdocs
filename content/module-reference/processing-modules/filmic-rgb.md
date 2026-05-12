@@ -63,7 +63,7 @@ The ranges of _filmic rgb_'s sliders are limited to typical and safe values, but
 
 **Note**: _filmic rgb_ cannot be set with entirely neutral parameters (resulting in a "no-operation") -- as soon as the module is enabled, the image is always at least slightly affected. You can, however, come close to neutral with the following settings:
 
--   in the [_look_](#look) tab, set contrast to 1.0, latitude to 99 % and mid-tones saturation to 0 %,
+-   in the [_look_](#look) tab, set contrast to 1.0, linear region to 99 % and mid-tones saturation to 0 %,
 -   in the [_options_](#options) tab, set contrast in shadows and in highlights to _soft_.
 
 In this configuration, filmic will only perform a logarithmic tone mapping between the bounds set in the [_scene_](#scene) tab.
@@ -77,7 +77,7 @@ The graphic display at the top of the _filmic rgb_ module offers multiple views 
 The following views are available:
 
 look only
-: This is the default view. The main bright curve shows how the dynamic range of the scene (in EV) is compressed into the display-referred output range. The orange dot shows the middle-gray point, the white dots either side mark out the latitude range, and the orange part of the curve at the bottom and top indicates an overshoot problem with the spline (the [_look_](#look) tab has some controls to deal with this).
+: This is the default view. The main bright curve shows how the dynamic range of the scene (in EV) is compressed into the display-referred output range. The orange dot shows the middle-gray point, the white dots either side mark out the linear region, and the orange part of the curve at the bottom and top indicates an overshoot problem with the spline (the [_look_](#look) tab has some controls to deal with this).
 
 : ![filmic-rgb-look-only](./filmic-rgb/filmic-look-only.png#w50)
 
@@ -92,7 +92,7 @@ look + mapping (log)
 : ![filmic-rgb-look-mapping-lin](./filmic-rgb/filmic-look-mapping-log.png#w50)
 
 dynamic range mapping
-: This view is inspired by the Ansel Adams Zone System, showing how the zones in the input scene (EV) are mapped to the output. Middle gray from the scene is always mapped to 18% in the output (linear) space, and the view shows how the tonal ranges towards the extremes of the scene exposure range are compressed into a smaller number of zones in the display space, leaving more room for the mid-tones to be spread out over the remaining zones. The latitude range is represented by the darker gray portion in the middle.
+: This view is inspired by the Ansel Adams Zone System, showing how the zones in the input scene (EV) are mapped to the output. Middle gray from the scene is always mapped to 18% in the output (linear) space, and the view shows how the tonal ranges towards the extremes of the scene exposure range are compressed into a smaller number of zones in the display space, leaving more room for the mid-tones to be spread out over the remaining zones. The linear region is represented by the darker gray portion in the middle.
 
 : ![filmic-rgb-look-mapping-lin](./filmic-rgb/filmic-dynamic-range-map.png#w50)
 
@@ -100,7 +100,7 @@ dynamic range mapping
 
 **Note:** When some parameters are too extreme, resulting in an unfeasible curve, _filmic rgb_ will sanitize them internally. Sanitizing is illustrated in two ways on the look views:
 
--   A dot becoming red indicates that the linear part of the curve is pushed too far towards the top or the bottom. In the [_look_](#look) tab, reduce the _latitude_ or recenter the linear part using the _shadows ↔ highlights balance_ parameter.
+-   A dot becoming red indicates that the linear part of the curve is pushed too far towards the top or the bottom. In the [_look_](#look) tab, reduce the _linear region_ or recenter the linear part using the _shadows ↔ highlights balance_ parameter.
 -   A dot becoming a half circle indicates that contrast is too low given the dynamic range of the image. Increase _contrast_ in the [_look_](#look) tab, or the _dynamic range_ in the [_scene_](#scene) tab.
 
 ---
@@ -188,9 +188,9 @@ When working on the _look_ tab, it is recommended that you monitor the S-curve s
 
 If you see the orange warning indicator at either end of the S-curve, corrective actions should be performed to bring the S-curve back to a smooth monotonically increasing curve. This may involve:
 
--   reducing the latitude and/or contrast,
+-   reducing the linear region and/or contrast,
 
--   adjusting the shadows/highlights slider to shift the latitude and allow more room for the spline,
+-   adjusting the shadows/highlights slider to shift the linear region and allow more room for the spline,
 
 -   ensuring that the scene-referred black and white relative exposure sliders on the _scene_ tab have been properly set for the characteristics of the scene,
 
@@ -210,21 +210,21 @@ hardness (previously _target power factor function_)
 
 : This parameter is the power function applied to the output transfer function, and it is often improperly called the _gamma_ (which can mean too many things in imaging applications, so we should stop using that term). It is used to raise or compress the mid-tones to account for display non-linearities or to avoid quantization artifacts when encoding in 8 bit file formats. This is a common operation when applying ICC color profiles (except for linear RGB spaces, like Rec. 709 or Rec. 2020, which have a linear “gamma” of 1.0). However, at the output of _filmic rgb_, the signal is logarithmically encoded, which is not something ICC color profiles know to handle. As a consequence, if we let them apply a gamma of 1/2.2 on top, it will result in a double-up, which would cause the middle-gray to be remapped to 76% instead of 45% as it should in display-referred space.
 
-latitude
-: The latitude is the range between the two nodes enclosing the central linear portion of the curve, expressed as a percentage of the dynamic range defined in the [_scene_](#scene) tab (white relative exposure minus black relative exposure). It is the luminance range that is remapped in priority, and it is remapped to the luminance interval defined by the contrast parameter. If clipping is observed when increasing the latitude, you can compensate by either decreasing the latitude, shifting the latitude interval with the _shadow ↔ highlights balance_ parameter, or decreasing the contrast.
+linear region
+: The linear region is the range between the two nodes enclosing the central linear portion of the curve, expressed as a percentage of the dynamic range defined in the [_scene_](#scene) tab (white relative exposure minus black relative exposure). It is the luminance range that is remapped in priority, and it is remapped to the luminance interval defined by the contrast parameter. If clipping is observed when increasing the linear region, you can compensate by either decreasing the linear region, shifting the linear region interval with the _shadow ↔ highlights balance_ parameter, or decreasing the contrast.
 
-: The latitude also defines the range of luminances that are not desaturated at the extremities of the luminance range (See _mid-tones saturation_).
+: The linear region also defines the range of luminances that are not desaturated at the extremities of the luminance range (See _mid-tones saturation_).
 
 shadows ↔ highlights balance
-: By default, the latitude is centered in the middle of the dynamic range. If this produces clipping at one end of the curve, the balance parameter allows you to slide the latitude along the slope, towards the shadows or towards the highlights. This allows more room to be given to one extremity of the dynamic range than to the other, if the properties of the image demand it.
+: By default, the linear region is centered in the middle of the dynamic range. If this produces clipping at one end of the curve, the balance parameter allows you to slide the linear region along the slope, towards the shadows or towards the highlights. This allows more room to be given to one extremity of the dynamic range than to the other, if the properties of the image demand it.
 
 highlights saturation mix
-: At extreme luminances, pixels will tend towards either white or black. Because neither white nor black have color associated with them, the saturation of these pixels must be 0%. In order to gracefully transition towards this 0% saturation point, pixels outside the mid-tone latitude range are progressively desaturated as they approach the extremes. This setting controls how that is achieved. Positive values ensure that saturation is kept unchanged over the entire tonal range. Negative values bleach highlights at constant hue and luminance. Zero is an equal mix of both strategies.
+: At extreme luminances, pixels will tend towards either white or black. Because neither white nor black have color associated with them, the saturation of these pixels must be 0%. In order to gracefully transition towards this 0% saturation point, pixels outside the mid-tone linear region range are progressively desaturated as they approach the extremes. This setting controls how that is achieved. Positive values ensure that saturation is kept unchanged over the entire tonal range. Negative values bleach highlights at constant hue and luminance. Zero is an equal mix of both strategies.
 : This control is set to 0 by default and should normally be left unchanged as you are now advised to handle saturation earlier in the pipeline -- a preset "add basic colorfulness" has been added to the [_color balance rgb_](./color-balance-rgb.md) module for this purpose.
 
 ---
 
-**Note:** The _highlights saturation mix_ control has changed a number of times as the developer refined its functionality. The above description documents the current version (v7), which is the default and recommended version to use. In earlier versions, this control had different names ("extreme luminance saturation" in v3 and v6, "mid-tones saturation" in versions 4-5), and filmic's graph also included a darker "desaturation curve" indicating the amount of desaturation applied to pixels outside the latitude range. You can still access older versions by changing the "color science" setting in the [options](#options) tab. For more information on the operation of this control in older versions please see the tooltips that are displayed when you hover over the slider within darktable.
+**Note:** The _highlights saturation mix_ control has changed a number of times as the developer refined its functionality. The above description documents the current version (v7), which is the default and recommended version to use. In earlier versions, this control had different names ("extreme luminance saturation" in v3 and v6, "mid-tones saturation" in versions 4-5), and filmic's graph also included a darker "desaturation curve" indicating the amount of desaturation applied to pixels outside the linear region. You can still access older versions by changing the "color science" setting in the [options](#options) tab. For more information on the operation of this control in older versions please see the tooltips that are displayed when you hover over the slider within darktable.
 
 ---
 
