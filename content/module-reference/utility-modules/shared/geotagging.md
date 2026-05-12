@@ -39,7 +39,7 @@ original date/time
 : The original date/time of the image is shown here for reference.
 
 date/time offset
-: The calculated difference between the original date/time and that keyed in the _date/time_ field. If the calculated difference is greater than 99 days 23 hours 59 minutes and 59 seconds, the offset is invalidated.
+: The calculated difference between the original date/time and that keyed in the _date/time_ field. If the calculated difference is greater than 9999 days 23 hours 59 minutes and 59 seconds, the offset is invalidated.
 
 lock button
 : If the lock button is activated, the offset value is frozen. If you subsequently change the selected image(s), the new image date/time is updated using the locked offset. This allows you to apply the same offset to multiple groups of images.
