@@ -212,6 +212,7 @@ hardness (previously _target power factor function_)
 
 linear region
 : The linear region is the range between the two nodes enclosing the central linear portion of the curve, expressed as a percentage of the dynamic range defined in the [_scene_](#scene) tab (white relative exposure minus black relative exposure). It is the luminance range that is remapped in priority, and it is remapped to the luminance interval defined by the contrast parameter. If clipping is observed when increasing the linear region, you can compensate by either decreasing the linear region, shifting the linear region interval with the _shadow ↔ highlights balance_ parameter, or decreasing the contrast.
+Note: This setting was formerly named "latitude". 
 
 : The linear region also defines the range of luminances that are not desaturated at the extremities of the luminance range (See _mid-tones saturation_).
 
