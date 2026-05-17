@@ -4,7 +4,7 @@ id: welcome-pages
 weight: 5
 ---
 
-On the first run of darktable you will be presented with some welcome pages, to help you with the initial setup.
+On the first run of darktable you will be presented with some welcome pages, to help you with the initial setup. These pages introduce some basic concepts and allow the setting of some initial preferences.
 
 ![welcome page](./welcome/welcome-page.png#w50)
 
