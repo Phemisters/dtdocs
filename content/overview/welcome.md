@@ -10,5 +10,4 @@ On the first run of darktable you will be presented with some welcome pages, to 
 
 Use the 'prev' and 'next' buttons to move through the pages, and use 'close' to exit the welcome pages at any time. 
 
-
 The pages are not shown on subsequent runs unless the [preferences > miscellaneous > show welcome screen on next run](../preferences-settings/miscellaneous.md#interface) option is turned on.
