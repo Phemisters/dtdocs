@@ -64,7 +64,7 @@ From left to right:
 : Quick access menu for styles. Hover over a style name with your mouse to show a preview of the current darkroom image with the selected style applied.
 
 ![second-window-icon](./darkroom-view-layout/second-window-icon.png#icon) second darkroom window
-: For multi-monitor setup, allows the user to display a second image on another screen.
+: Allows the user to display a second image in a separate window. By default, the second window shows the same contents as the main view. When an image is "pinned" in the  second window, it will remain unchanged when making module changes, navigating the history stack or opening a different image in the main view. This is especially useful on large screens and multi-monitor setups.
 
 ![focus-peak-icon](./darkroom-view-layout/focus-peak-icon.png#icon) [focus peaking](../module-reference/utility-modules/shared/focus-peaking.md)
 : Toggle focus peaking mode.
