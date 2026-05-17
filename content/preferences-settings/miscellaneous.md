@@ -12,7 +12,6 @@ show splash screen at startup
 show welcome screen on next run
 : When activated, the [welcome](../overview/welcome.md) setup pages will be shown the next time darktable is started (default on, but is set to off after the welcome pages are shown).
 
-
 load default shortcuts at startup
 : When launching the application, darktable loads default shortcuts first, and then loads user-defined shortcuts on top. This allows default shortcuts to be overridden with a new action but prevents them from being deleted (since the deleted shortcut will be automatically reloaded on the next restart). Deactivate this preference to stop loading default shortcuts on startup -- only load the user-defined ones (including any defaults that you have not subsequently deleted or overridden). This makes deletion easier but also means that you will not benefit from new shortcuts added in future versions without first re-enabling this preference (default on).
 
