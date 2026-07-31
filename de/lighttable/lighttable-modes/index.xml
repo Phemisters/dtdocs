@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leuchttisch Modi on darktable user manual</title>
+    <link>https://darktable-org.github.io/dtdocs/de/lighttable/lighttable-modes/</link>
+    <description>Recent content in Leuchttisch Modi on darktable user manual</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <atom:link href="https://darktable-org.github.io/dtdocs/de/lighttable/lighttable-modes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Volle Voransicht</title>
+      <link>https://darktable-org.github.io/dtdocs/de/lighttable/lighttable-modes/full-preview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://darktable-org.github.io/dtdocs/de/lighttable/lighttable-modes/full-preview/</guid>
+      <description>&lt;p&gt;In jeder Ansicht der Modi des Leuchttisches kannst du eine voll-gezoomtes Bild, das gerade unter dem Mauszeiger ist, mit dem Drücken und Halten der Taste W. Das hilft ein Bild näher zu betrachten während der Beurteilung und Auswahl.&lt;/p&gt;&#xA;&lt;p&gt;Drücken und Halten von Strg+W zeigt ein Vollbild und identifiziert auch scharfe Bereiche des Bildes, die anzeigen, wo der Fokus im Bild liegt. Damit dieses Werkzeug arbeiten kann, muss das Eingabebild ein eingebettetes JPEG-Vorschaubild entahlten, was für die meisten RAW-Dateien zutrifft.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

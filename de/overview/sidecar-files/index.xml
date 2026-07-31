@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XMP Dateien und nicht destruktive Bearbeitung on darktable user manual</title>
+    <link>https://darktable-org.github.io/dtdocs/de/overview/sidecar-files/</link>
+    <description>Recent content in XMP Dateien und nicht destruktive Bearbeitung on darktable user manual</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <atom:link href="https://darktable-org.github.io/dtdocs/de/overview/sidecar-files/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Importiere XMP Dateien, die durch andere Anwendungen erstellt wurden</title>
+      <link>https://darktable-org.github.io/dtdocs/de/overview/sidecar-files/sidecar-import/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://darktable-org.github.io/dtdocs/de/overview/sidecar-files/sidecar-import/</guid>
+      <description>&lt;p&gt;Wenn ein Bild importiert wird, prüft darktable automatisch, ob es eine zugehörige XMP-Datei gibt. Neben Dateien mit Namen &lt;code&gt;&amp;lt;Dateiname&amp;gt;.&amp;lt;Endung&amp;gt;.xmp&lt;/code&gt; und &lt;code&gt;&amp;lt;Dateiname&amp;gt;_&amp;lt;Nummer&amp;gt;.&amp;lt;Endung&amp;gt;.xmp&lt;/code&gt; (XMP-Namensformate von darktable), prüft darktable auch auf Dateien in der Form &lt;code&gt;&amp;lt;Dateiname&amp;gt;.xmp&lt;/code&gt; (XMP-Begleitdateien von Lightroom). Letztere werden durch darktable gelesen, aber nicht geschrieben. Einmal importiert, erzeugt darktable eine zusätzliche XMP-Datei mit eigener Namensgebung.&lt;/p&gt;&#xA;&lt;p&gt;Gegenwärtig kann darktable die folgenden Metadaten von XMP-Dateien aus Lightroom während des Import-Prozesses laden:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Tags (inklusive hierarchische Tags)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lokale Kopien</title>
+      <link>https://darktable-org.github.io/dtdocs/de/overview/sidecar-files/local-copies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://darktable-org.github.io/dtdocs/de/overview/sidecar-files/local-copies/</guid>
+      <description>&lt;p&gt;Viele Benutzer haben riesige Fotosammlungen, die sie auf Festplatten ihres Computers oder auf einem externen Speichermedium (RAID NAS, externe Harddisk etc.).&lt;/p&gt;&#xA;&lt;p&gt;Daher ist es ein gängiger Anwendungsfall bereits auf Reisen, Bilder lokal auf dem Notebook zu entwickeln und später mit dem Originalspeicher zu synchronisieren. Das manuelle Kopieren von Bildern vom Hauptspeicher auf das Notebook und zurück ist umständlich und fehleranfällig. Die Funktion von darktable „lokale Kopien“ wurde entwickelt, um diese Anwendungsfälle direkt zu unterstützen.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
